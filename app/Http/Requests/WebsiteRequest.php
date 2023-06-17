@@ -23,7 +23,7 @@ class WebsiteRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'url' => 'required|url',
+            'url' => 'required|string|unique:websites,url',
         ];
     }
 }

@@ -38,9 +38,9 @@ class WebsiteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Website $id)
+    public function show(Website $website)
     {
-        return new WebsiteResource($id);
+        return new WebsiteResource($website);
     }
 
     public function update(WebsiteRequest $request, Website $website)
