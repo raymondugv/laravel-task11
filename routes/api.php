@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\PostController;
+use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\WebsiteController;
 use App\Http\Controllers\Api\V1\SubscriptionController;
 
@@ -21,4 +22,5 @@ Route::apiResources([
     'websites' => WebsiteController::class,
     'posts' => PostController::class,
     'subscriptions' => SubscriptionController::class,
+    'users' => UserController::class,
 ]);
