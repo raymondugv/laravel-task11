@@ -37,3 +37,11 @@ To process the queued jobs and send email notifications, run the following comma
 This command will start the queue worker, which listens for incoming jobs and processes them in the background.
 
 Make sure to keep the queue worker running in a separate terminal window or as a background process.
+
+## 6. Run the test
+
+`php artisan test` to run the test.
+`php artisan send:post-notifications` to send the post notifications.
+
+for API documentation, please read link below:
+https://documenter.getpostman.com/view/21583062/2s93si19k6
