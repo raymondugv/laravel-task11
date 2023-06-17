@@ -43,23 +43,17 @@ class WebsiteController extends Controller
         return new WebsiteResource($id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Website $id, WebsiteRequest $request)
+    public function update(WebsiteRequest $request, Website $website)
     {
-        $id->update($request->validated());
+        $website->update($request->validated());
 
-        return new WebsiteResource($id);
+        return new WebsiteResource($website);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Website $id)
+    public function destroy(Website $website)
     {
-        $id->delete();
+        $website->delete();
 
-        return response()->noContent();
+        return response()->json(['message' => 'Website deleted successfully.']);
     }
 }
