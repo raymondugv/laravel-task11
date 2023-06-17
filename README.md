@@ -8,7 +8,7 @@ Clone the repository to your local machine.
 
 ## 2. Install Dependencies
 
-`php artisan composer install`
+`composer install`
 
 ## 3. Change Environment Settings
 
