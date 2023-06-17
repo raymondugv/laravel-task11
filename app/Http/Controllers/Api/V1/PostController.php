@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Http\Resources\PostResource;
-use App\Mail\NewPostNotification;
+use App\Jobs\SendPostNotificationJob;
 use App\Models\Post;
 use App\Models\Subscription;
-use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -37,8 +36,8 @@ class PostController extends Controller
 
         $subcription_list = Subscription::where('website_id', $post->website_id)->get();
 
-        foreach ($subcription_list as $subcription) {
-            Mail::to($subcription->user->email)->send(new NewPostNotification($post));
+        foreach ($subcription_list as $subscriber) {
+            SendPostNotificationJob::dispatch($post, $subscriber->user->email);
         }
 
         $post->update([
