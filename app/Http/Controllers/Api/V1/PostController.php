@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Http\Resources\PostResource;
+use App\Mail\NewPostNotification;
 use App\Models\Post;
+use App\Models\Subscription;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -30,6 +34,16 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $post = $this->post->create($request->validated());
+
+        $subcription_list = Subscription::where('website_id', $post->website_id)->get();
+
+        foreach ($subcription_list as $subcription) {
+            Mail::to($subcription->user->email)->send(new NewPostNotification($post));
+        }
+
+        $post->update([
+            'is_notified' => 1,
+        ]);
 
         return new PostResource($post);
     }
