@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\WebsiteController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 // Route for Website resource
-Route::apiResource('websites', App\Http\Controllers\Api\V1\WebsiteController::class);
+Route::apiResources([
+    'websites' => WebsiteController::class,
+    'posts' => PostController::class,
+]);
