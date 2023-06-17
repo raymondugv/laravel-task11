@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\V1\WebsiteController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\PostController;
+use App\Http\Controllers\Api\V1\WebsiteController;
+use App\Http\Controllers\Api\V1\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 Route::apiResources([
     'websites' => WebsiteController::class,
     'posts' => PostController::class,
+    'subscriptions' => SubscriptionController::class,
 ]);
