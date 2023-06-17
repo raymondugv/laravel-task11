@@ -14,7 +14,7 @@ return new class () extends Migration {
             $table->uuid('id');
             $table->string('title');
             $table->text('body');
-            $table->foreignUuid('website_id')->constrained('websites');
+            $table->string('website_id');
             $table->timestamps();
         });
     }
